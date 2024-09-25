@@ -1,5 +1,5 @@
 extends Resource
-const Player_Stats = preload("res://Item_Test.gd")
+const Player_Stats = preload("res://Player_Stats.gd")
 
 @export var stat_changes : Dictionary
 var damage :int
