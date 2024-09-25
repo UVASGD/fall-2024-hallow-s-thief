@@ -17,10 +17,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#Press enter to get item (currently only the DmgBuffItem)
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("1"):
 		print("Gave Item " + str(items[0].resource_path))
 		items[0].apply_item(self)#calling with self seems inefficent design wise
-		
+	if Input.is_action_just_pressed("2"):
+		print("Gave Item " + str(items[1].resource_path))
+		items[1].apply_item(self)	
 	#press left mouse to "fire"
 	if Input.is_action_just_pressed("mouse_0"):
 		print("Just Fired")

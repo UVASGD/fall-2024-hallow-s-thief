@@ -7,4 +7,6 @@ extends Node#extend node to allow global script
 class Item_Advanced_Functions:
 	static func damage_increase(ps):
 		ps.damage += 1
-		print("I increased ur damage daug")
+		print("I increased ur damage dawg")
+	static func shoot_additional_projectile(ps):
+		print("let's pretend the player shot an additional projectile")
