@@ -1,8 +1,9 @@
 extends Resource
-const Player_Stats = preload("res://Player_Stats.gd")
 
-@export var stat_changes : Dictionary
-var damage :int
-var health : int
-func ApplyItem(ps : Player_Stats):
-	return
+@export var damage :int
+@export var health : int
+@export var onFireFunctions : String #Array[String] for multiple on fire functions
+func apply_item(ps):
+	var c = Callable(ItemAdvancedFunctions.Item_Advanced_Functions,onFireFunctions)
+	
+	ps.onAttack.connect(c)

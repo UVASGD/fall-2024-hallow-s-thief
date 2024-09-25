@@ -2,9 +2,10 @@ extends Node
 
 @export var items: Array[Resource]
 
-const Player_Stats = preload("res://Player_Stats.gd")
 
-var player_stats :Player_Stats
+var damage :int = 0
+var health :int = 0
+signal onAttack(player)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,4 +16,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
-		return
+		print("Gave Item " + str(items[0].resource_path))
+		items[0].apply_item(self)
+	if Input.is_action_just_pressed("mouse_0"):
+		print("Just Fired")
+		onAttack.emit(self)
+	if Input.is_action_just_pressed("mouse_1"):
+		print("damage is " + str(damage))

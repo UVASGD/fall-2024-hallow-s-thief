@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_7obgw")
-stat_changes = {}
+damage = 0
+health = 0
+onFireFunctions = "damage_increase"
