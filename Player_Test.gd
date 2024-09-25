@@ -1,5 +1,6 @@
 extends Node
 
+#this is just a test repleca of the player
 @export var items: Array[Resource]
 
 
@@ -15,11 +16,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#Press enter to get item (currently only the DmgBuffItem)
 	if Input.is_action_just_pressed("ui_accept"):
 		print("Gave Item " + str(items[0].resource_path))
-		items[0].apply_item(self)
+		items[0].apply_item(self)#calling with self seems inefficent design wise
+		
+	#press left mouse to "fire"
 	if Input.is_action_just_pressed("mouse_0"):
 		print("Just Fired")
 		onAttack.emit(self)
+		
+	#press right mouse to check damage stat
 	if Input.is_action_just_pressed("mouse_1"):
 		print("damage is " + str(damage))

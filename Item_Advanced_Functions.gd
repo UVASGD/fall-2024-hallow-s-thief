@@ -1,4 +1,9 @@
-extends Node
+extends Node#extend node to allow global script
+#THIS NEEDS TO BE SET AS A GLOBAL SCRIPT
+#Project > Project Settings > Globals
+
+
+#Class stores and type of special item functionality
 class Item_Advanced_Functions:
 	static func damage_increase(ps):
 		ps.damage += 1
