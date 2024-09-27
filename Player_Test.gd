@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#Press enter to get item (currently only the DmgBuffItem)
 	if Input.is_action_just_pressed("1"):
 		print("Gave Item " + str(items[0].resource_path))
