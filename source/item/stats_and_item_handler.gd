@@ -36,4 +36,3 @@ func handle_drop(item : Item, destroy : bool) :
 	#(queue_free() is temporary, will change later when we know whats actually going to happen with the item)
 	if destroy : item.queue_free()
 	pass
-
