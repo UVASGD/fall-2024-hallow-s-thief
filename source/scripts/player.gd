@@ -2,12 +2,27 @@ extends CharacterBody2D
 
 class_name Player
 
+#### item and stats handling (everything else is implemented in the stats_and_item_handler)
+@onready var stats_and_item_handler : Node2D = $StatsAndItemHandler
+@export var base_stats : Item_Res
+var stats : Stats = Stats.new()
+
+@onready var  animation_player = $AnimationPlayer
+var Health = stats.health + 1
 var Speed := 0.0
 var movement := Vector2.ZERO
+enum costumes {FRANKENSTEIN, GHOST, PUMPKIN, WITCH}
 
 const TOP_SPEED_FACTOR := 15.0
 const ACCELERATION := 15.0
 
+enum Character {
+	WITCH,
+	GHOST,
+	FRANKENSTEIN,
+	PUMPKIN
+}
+var character = Character.WITCH
 
 func _ready() -> void:
 	pass
@@ -15,6 +30,10 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	handle_move()
+	if Input.is_action_just_pressed("Attack"):
+		handle_attack()
+	if Health <= 0:
+		self.queue_free()
 
 
 func handle_move() -> void:
@@ -34,10 +53,6 @@ func handle_move() -> void:
 	
 	move_and_slide()
 
-#### item and stats handling (everything else is implemented in the stats_and_item_handler)
-@onready var stats_and_item_handler : Node2D = $StatsAndItemHandler
-@export var base_stats : Item_Res
-var stats : Stats = Stats.new()
 
 func pickup_item(item : Item) :
 	stats_and_item_handler.handle_pickup(item)
@@ -47,3 +62,10 @@ func drop_item(item : Item, destroy : bool) :
 	#if destroy is false, you should be reparenting the item
 	stats_and_item_handler.handle_drop(item, destroy)
 	pass
+	
+func handle_attack(): #Right now, just enables, hitbox for 0.5 seconds
+	animation_player.play("Player_Attack")
+	
+func handle_damage(damage: int) -> void:
+	Health -= damage 
+	#print(Health)
