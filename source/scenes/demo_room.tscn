@@ -7,6 +7,9 @@
 
 [node name="Player" parent="." instance=ExtResource("1_uxgo6")]
 
+[node name="Player2" parent="." instance=ExtResource("1_uxgo6")]
+position = Vector2(-43, 1)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="."]

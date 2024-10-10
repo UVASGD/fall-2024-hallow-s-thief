@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://rgfnpcsvv534"]
+[gd_scene load_steps=15 format=3 uid="uid://rgfnpcsvv534"]
 
 [ext_resource type="Script" path="res://source/scripts/player.gd" id="1_ws1a7"]
 [ext_resource type="Script" path="res://source/item/stats_and_item_handler.gd" id="3_3yyiq"]
+[ext_resource type="Script" path="res://source/scripts/attack_pivot.gd" id="4_2ge0r"]
+[ext_resource type="Script" path="res://source/scripts/PlayerHurtbox.gd" id="4_uxpn6"]
 [ext_resource type="Script" path="res://source/item/item_resource.gd" id="5_qrgxk"]
+[ext_resource type="Script" path="res://source/scripts/PlayerHitbox.gd" id="6_ocl7x"]
 
 [sub_resource type="Resource" id="Resource_t33mb"]
 script = ExtResource("5_qrgxk")
@@ -22,6 +25,50 @@ cost = 0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tx0kn"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rm1e1"]
+radius = 23.0
+height = 46.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sd8nn"]
+radius = 9.0
+height = 28.0
+
+[sub_resource type="Animation" id="Animation_jnlk5"]
+resource_name = "Player_Attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackPivot/PlayerHitbox/Hitbox:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_b6fkh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackPivot/PlayerHitbox/Hitbox:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghvxu"]
+_data = {
+"Player_Attack": SubResource("Animation_jnlk5"),
+"RESET": SubResource("Animation_b6fkh")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ws1a7")
 base_stats = SubResource("Resource_t33mb")
@@ -36,3 +83,27 @@ mesh = SubResource("CapsuleMesh_tx0kn")
 
 [node name="StatsAndItemHandler" type="Node2D" parent="."]
 script = ExtResource("3_3yyiq")
+
+[node name="AttackPivot" type="Node2D" parent="."]
+script = ExtResource("4_2ge0r")
+
+[node name="PlayerHitbox" type="Area2D" parent="AttackPivot"]
+script = ExtResource("6_ocl7x")
+
+[node name="Hitbox" type="CollisionShape2D" parent="AttackPivot/PlayerHitbox"]
+position = Vector2(22, 0)
+shape = SubResource("CapsuleShape2D_rm1e1")
+disabled = true
+debug_color = Color(0.881696, 0.322571, 0.257543, 0.42)
+
+[node name="PlayerHurtbox" type="Area2D" parent="."]
+script = ExtResource("4_uxpn6")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="PlayerHurtbox"]
+shape = SubResource("CapsuleShape2D_sd8nn")
+debug_color = Color(1.05888e-06, 0.604099, 0.675739, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ghvxu")
+}
