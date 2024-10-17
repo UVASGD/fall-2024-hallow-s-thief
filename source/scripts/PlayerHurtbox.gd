@@ -16,4 +16,4 @@ func _on_area_entered(hitbox: PlayerHitbox):
 	if hitbox.owner == owner:
 		return
 	if owner.has_method("handle_damage"):
-		owner.handle_damage(owner.stats.attackDamage + 100)
+		owner.handle_damage(hitbox.owner.stats.attackDamage)

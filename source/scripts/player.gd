@@ -11,11 +11,12 @@ var stats : Stats = Stats.new()
 var Health = stats.health + 1
 var Speed := 0.0
 var movement := Vector2.ZERO
-enum costumes {FRANKENSTEIN, GHOST, PUMPKIN, WITCH}
+#enum costumes {FRANKENSTEIN, GHOST, PUMPKIN, WITCH}
 
 const TOP_SPEED_FACTOR := 15.0
 const ACCELERATION := 15.0
 
+var isMonster = false;
 enum Character {
 	WITCH,
 	GHOST,

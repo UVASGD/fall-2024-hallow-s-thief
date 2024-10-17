@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://bn8k582vibkdr"]
+
+[ext_resource type="Script" path="res://source/scripts/PlayerHurtbox.gd" id="1_buaa7"]
+[ext_resource type="Script" path="res://scenes/sandbag.gd" id="1_lqjq7"]
+[ext_resource type="Texture2D" uid="uid://mut4xo84svu" path="res://sandbag.png" id="1_usws4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8tgi1"]
+radius = 56.0089
+
+[sub_resource type="Animation" id="Animation_5xpc2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fkmo7"]
+resource_name = "stagger"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.2, 0.3, 0.333333, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.523599, 0.610865, 0.523599, 0.0, -0.523599, -0.610865, -0.523599, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gthx4"]
+_data = {
+"RESET": SubResource("Animation_5xpc2"),
+"stagger": SubResource("Animation_fkmo7")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tyxrx"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vs44s"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_lqjq7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-12, -6)
+texture = ExtResource("1_usws4")
+
+[node name="PlayerHurtbox" type="Area2D" parent="Sprite2D"]
+script = ExtResource("1_buaa7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/PlayerHurtbox"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_8tgi1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gthx4")
+}
+
+[node name="hitparticles" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_tyxrx")
+texture = SubResource("ViewportTexture_vs44s")
+
+[node name="Marker2D" type="Marker2D" parent="."]
