@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item_Test" load_steps=2 format=3 uid="uid://bfaht58ucl5e2"]
+
+[ext_resource type="Script" path="res://source/scripts/Item_Test.gd" id="1_0o4wk"]
+
+[resource]
+script = ExtResource("1_0o4wk")
+damage = 0
+health = 0
+onStartFunctions = ""
+onFireFunctions = ""
+onGetHitFunctions = "damage_when_low_health"

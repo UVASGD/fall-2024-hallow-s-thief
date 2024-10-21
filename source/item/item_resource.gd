@@ -2,10 +2,10 @@ extends Resource
 class_name Item_Res
 
 enum Rarity {
-    COMMON,
-    UNCOMMON,
-    RARE,
-    LEGENDARY
+	COMMON,
+	UNCOMMON,
+	RARE,
+	LEGENDARY
 }
 
 #Info

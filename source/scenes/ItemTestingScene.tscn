@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=3 uid="uid://csmmvcufjnsl2"]
+
+[ext_resource type="Script" path="res://source/scripts/Player_Test.gd" id="1_rryau"]
+[ext_resource type="Resource" uid="uid://6ukslotnk4y3" path="res://DmgBuffItem.tres" id="2_blmat"]
+[ext_resource type="Resource" uid="uid://dkvnmfbifsaig" path="res://DamageWhenOnFire.tres" id="3_h0kxt"]
+[ext_resource type="Resource" uid="uid://bfaht58ucl5e2" path="res://DamageBuffWhenLowHp.tres" id="4_s3syo"]
+[ext_resource type="Script" path="res://source/scripts/StatusEffectManager.gd" id="4_t3y7h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f54gc"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource("1_rryau")
+items = Array[Resource]([ExtResource("2_blmat"), ExtResource("3_h0kxt"), ExtResource("4_s3syo")])
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+shape = SubResource("CircleShape2D_f54gc")
+
+[node name="StatusEffectManager" type="Node2D" parent="Player"]
+script = ExtResource("4_t3y7h")
