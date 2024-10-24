@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7v0fv55kbkh5"
-path="res://.godot/imported/sandbag.png-a6e0d94f3324f210e28a346c1bd03286.ctex"
+uid="uid://cl1h1x28hudhr"
+path="res://.godot/imported/tempProj_JD.png-9bb1b068084658c389fc905c4bb067e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sandbag.png"
-dest_files=["res://.godot/imported/sandbag.png-a6e0d94f3324f210e28a346c1bd03286.ctex"]
+source_file="res://tempProj_JD.png"
+dest_files=["res://.godot/imported/tempProj_JD.png-9bb1b068084658c389fc905c4bb067e6.ctex"]
 
 [params]
 

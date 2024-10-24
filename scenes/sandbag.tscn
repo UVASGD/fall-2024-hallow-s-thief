@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://source/scripts/PlayerHurtbox.gd" id="1_buaa7"]
 [ext_resource type="Script" path="res://scenes/sandbag.gd" id="1_lqjq7"]
-[ext_resource type="Texture2D" uid="uid://mut4xo84svu" path="res://sandbag.png" id="1_usws4"]
+[ext_resource type="Texture2D" uid="uid://c7v0fv55kbkh5" path="res://sandbag.png" id="1_usws4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tgi1"]
 radius = 56.0089
@@ -58,6 +58,8 @@ position = Vector2(-12, -6)
 texture = ExtResource("1_usws4")
 
 [node name="PlayerHurtbox" type="Area2D" parent="Sprite2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_buaa7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/PlayerHurtbox"]

@@ -24,6 +24,8 @@ enum Character {
 	PUMPKIN
 }
 var character = Character.WITCH
+#Player has reference to projectile, used by method shoot_projectile
+const Projectile_Scene := preload("res://source/scenes/projectile.tscn")
 
 func _ready() -> void:
 	pass
@@ -65,8 +67,14 @@ func drop_item(item : Item, destroy : bool) :
 	pass
 	
 func handle_attack(): #Right now, just enables, hitbox for 0.5 seconds
-	animation_player.play("Player_Attack")
+	#animation_player.play("Player_Attack")
+	shoot_projectile(Projectile_Scene)
 	
 func handle_damage(damage: int) -> void:
 	Health -= damage 
 	#print(Health)
+func shoot_projectile(projectile: PackedScene) -> void:
+	var proj_instance := projectile.instantiate()
+	proj_instance.position = self.global_position
+	proj_instance.direction = global_position.direction_to(get_global_mouse_position())
+	add_child(proj_instance)

@@ -92,6 +92,8 @@ script = ExtResource("3_3yyiq")
 script = ExtResource("4_2ge0r")
 
 [node name="PlayerHitbox" type="Area2D" parent="AttackPivot"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("6_ocl7x")
 
 [node name="Hitbox" type="CollisionShape2D" parent="AttackPivot/PlayerHitbox"]
@@ -101,6 +103,8 @@ disabled = true
 debug_color = Color(0.881696, 0.322571, 0.257543, 0.42)
 
 [node name="PlayerHurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("4_uxpn6")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="PlayerHurtbox"]
