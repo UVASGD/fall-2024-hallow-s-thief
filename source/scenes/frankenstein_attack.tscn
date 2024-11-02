@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5dgress721xk"]
+
+[ext_resource type="Script" path="res://source/scripts/frankenstein_attack.gd" id="1_2v0qi"]
+[ext_resource type="Script" path="res://source/scripts/PlayerHitbox.gd" id="2_h1srw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_syufq"]
+radius = 45.0
+height = 128.0
+
+[node name="frankenstein_attack" type="Node2D"]
+script = ExtResource("1_2v0qi")
+
+[node name="PlayerHitbox" type="Area2D" parent="."]
+script = ExtResource("2_h1srw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+position = Vector2(77, 0)
+shape = SubResource("CapsuleShape2D_syufq")
+
+[node name="lifespan_timer" type="Timer" parent="."]

@@ -27,7 +27,7 @@ cost = 0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rm1e1"]
 radius = 23.0
-height = 46.0
+height = 140.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sd8nn"]
 radius = 9.0
@@ -89,15 +89,19 @@ mesh = SubResource("CapsuleMesh_tx0kn")
 script = ExtResource("3_3yyiq")
 
 [node name="AttackPivot" type="Node2D" parent="."]
+visible = false
 script = ExtResource("4_2ge0r")
 
 [node name="PlayerHitbox" type="Area2D" parent="AttackPivot"]
+visible = false
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("6_ocl7x")
 
 [node name="Hitbox" type="CollisionShape2D" parent="AttackPivot/PlayerHitbox"]
-position = Vector2(22, 0)
+visible = false
+position = Vector2(70, 0)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_rm1e1")
 disabled = true
 debug_color = Color(0.881696, 0.322571, 0.257543, 0.42)
@@ -111,7 +115,8 @@ script = ExtResource("4_uxpn6")
 shape = SubResource("CapsuleShape2D_sd8nn")
 debug_color = Color(1.05888e-06, 0.604099, 0.675739, 0.42)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]
+[node name="MonsterHurtbox" type="CollisionShape2D" parent="PlayerHurtbox"]
+visible = false
 shape = SubResource("CapsuleShape2D_a0wf2")
 disabled = true
 debug_color = Color(0.532793, 0.411467, 1, 0.42)

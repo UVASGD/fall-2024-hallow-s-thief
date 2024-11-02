@@ -19,4 +19,4 @@ color = Color(1, 0, 1, 1)
 script = ExtResource("2_c3313")
 
 [node name="Node2D" parent="." instance=ExtResource("3_ujogw")]
-position = Vector2(170, -38)
+position = Vector2(210, -2)

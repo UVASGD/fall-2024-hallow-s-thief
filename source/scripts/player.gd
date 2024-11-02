@@ -16,16 +16,19 @@ var movement := Vector2.ZERO
 const TOP_SPEED_FACTOR := 15.0
 const ACCELERATION := 15.0
 
-var isMonster = false;
+#var isMonster = false;
 enum Character {
 	WITCH,
-	GHOST,
 	FRANKENSTEIN,
+	GHOST,
 	PUMPKIN
 }
-var character = Character.WITCH
-#Player has reference to projectile, used by method shoot_projectile
+var character = Character.FRANKENSTEIN
+#Enemy attack instances
+#Witch
 const Projectile_Scene := preload("res://source/scenes/projectile.tscn")
+#Frankenstein
+const Frank_Attack_Scene := preload("res://source/scenes/frankenstein_attack.tscn")
 
 func _ready() -> void:
 	pass
@@ -33,6 +36,7 @@ func _ready() -> void:
 
 func _process(delta) -> void:
 	handle_move()
+	#if Input.is_action_pressed("Attack"):
 	if Input.is_action_just_pressed("Attack"):
 		handle_attack()
 	if Health <= 0:
@@ -67,14 +71,54 @@ func drop_item(item : Item, destroy : bool) :
 	pass
 	
 func handle_attack(): #Right now, just enables, hitbox for 0.5 seconds
-	#animation_player.play("Player_Attack")
-	shoot_projectile(Projectile_Scene)
+	match character:
+		Character.WITCH:
+			shoot_projectile(Projectile_Scene)
+		Character.FRANKENSTEIN:
+			attack_Frankenstein(Frank_Attack_Scene)
+		Character.GHOST:
+			pass
+		Character.PUMPKIN:
+			pass
+		_:
+			print("ERROR: Player not assigned character")
+	
 	
 func handle_damage(damage: int) -> void:
 	Health -= damage 
 	#print(Health)
 func shoot_projectile(projectile: PackedScene) -> void:
 	var proj_instance := projectile.instantiate()
+	# set the projectile instance at players locatio
 	proj_instance.position = self.global_position
+	# set direction of projectile towards mouse
 	proj_instance.direction = global_position.direction_to(get_global_mouse_position())
+	# assign damage from players stats to projectiles damage
+	proj_instance.set_damage(stats.attackDamage);
+	#spawn projectile
 	add_child(proj_instance)
+
+func attack_Frankenstein(frank_attack: PackedScene) -> void:
+	var frank_attack_instance := frank_attack.instantiate()
+	frank_attack_instance.position = self.global_position
+	frank_attack_instance.direction = global_position.direction_to(get_global_mouse_position())
+	frank_attack_instance.set_damage(stats.attackDamage);
+	#add_child(frank_attack_instance)
+	add_child(frank_attack_instance)
+	
+func setPlayerCharacter(char: Character) -> void:
+	match char:
+		Character.WITCH:
+			character = Character.WITCH
+			#collision_layer = 1
+			#collision_mask = 2
+		Character.FRANKENSTEIN:
+			character = Character.FRANKENSTEIN
+		Character.GHOST:
+			character = Character.GHOST
+		Character.PUMPKIN:
+			character = Character.PUMPKIN
+	
+	
+func getPlayerPosition() -> Vector2:
+	return position
