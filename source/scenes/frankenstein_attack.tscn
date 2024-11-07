@@ -14,7 +14,7 @@ script = ExtResource("1_2v0qi")
 script = ExtResource("2_h1srw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(77, 0)
+position = Vector2(45, 0)
 shape = SubResource("CapsuleShape2D_syufq")
 
 [node name="lifespan_timer" type="Timer" parent="."]

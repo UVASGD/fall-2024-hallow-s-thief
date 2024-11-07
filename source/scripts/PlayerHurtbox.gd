@@ -18,10 +18,15 @@ func _on_area_entered(hitbox: PlayerHitbox):
 	if hitbox.owner == owner:
 		#print("this is the owners hitbox")
 		return
-	if owner.has_method("handle_damage") and hitbox.owner.has_method("get_damage"):
-		#need to add check for projectile
-		print("PLAYER HIT!")
-		owner.handle_damage(hitbox.owner.get_damage())
+	if owner.has_method("handle_damage") and hitbox.owner.has_method("get_attackingPlayer"):
+		#check to see if player is the owner of the attack
+		#here the hurt player can reference the attacking player instance
+		if (hitbox.owner.get_attackingPlayer() == owner):
+			return
+			#DO NOTHINGd
+		else: #else handle the damage
+			print("PLAYER HIT!")
+			owner.handle_damage(hitbox.owner.get_damage())
 		#if(hitbox.owner.has_method("get_damage_from_projectile")):
 			#print("the hitbox was from a projectile")
 			#owner.handle_damage(hitbox.owner.get_damage_from_projectile())

@@ -12,6 +12,7 @@ extends Node2D
 #direction of projectile
 var direction := Vector2.ZERO
 var damage = 0;
+var attackingPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,6 +42,11 @@ func set_damage( newDamage : int) -> void:
 	
 func set_speed( newSpeed : float ) -> void:
 	speed = newSpeed;
+
+func set_attackingPlayer(player: CharacterBody2D) -> void:
+	attackingPlayer = player
+func get_attackingPlayer() -> CharacterBody2D:
+	return attackingPlayer
 	
 func explode_with_particles() -> void:
 	var particle = deathParticle.instance()

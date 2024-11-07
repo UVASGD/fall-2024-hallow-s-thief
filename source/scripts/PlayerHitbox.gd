@@ -3,8 +3,9 @@ extends Area2D
 
 @onready var collision_shape = $CollisionShape2D
 func _init() -> void:
-	collision_layer = 2
-	collision_mask = 0
+	#collision_layer = 2
+	#collision_mask = 0
+	pass
 
 func _ready() -> void:
 	pass
