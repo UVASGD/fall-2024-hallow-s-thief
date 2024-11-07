@@ -38,7 +38,7 @@ func _ready() -> void:
 func _process(delta) -> void:
 	handle_move()
 	#if Input.is_action_pressed("Attack"):
-	if Input.is_action_pressed("Attack"):
+	if Input.is_action_just_pressed("Attack"):
 		handle_attack()
 	if Health <= 0:
 		self.queue_free()
