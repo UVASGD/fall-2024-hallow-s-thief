@@ -11,7 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func handle_damage(damage : int):
+func handle_damage(damage : int, attackingPlayer: CharacterBody2D):
 	print("SANDBAG HIT: ",damage, " pts of damage")
 	anim_player.play("stagger")
 	

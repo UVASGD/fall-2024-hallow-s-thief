@@ -23,7 +23,7 @@ enum Character {
 	GHOST,
 	PUMPKIN
 }
-var character = Character.WITCH
+var character = Character.PUMPKIN
 #Enemy attack instances
 #Witch
 const Projectile_Scene := preload("res://source/scenes/projectile.tscn")
@@ -85,7 +85,7 @@ func handle_attack(): #Right now, just enables, hitbox for 0.5 seconds
 			print("ERROR: Player not assigned character")
 	
 	
-func handle_damage(damage: int) -> void:
+func handle_damage(damage: int, attackingPlayer: CharacterBody2D) -> void:
 	Health -= damage 
 	#print(Health)
 func shoot_projectile(projectile: PackedScene) -> void:

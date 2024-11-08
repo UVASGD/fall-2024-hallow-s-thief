@@ -25,10 +25,7 @@ func _on_area_entered(hitbox: PlayerHitbox):
 			return
 			#DO NOTHINGd
 		else: #else handle the damage
-			print("PLAYER HIT!")
-			owner.handle_damage(hitbox.owner.get_damage())
-		#if(hitbox.owner.has_method("get_damage_from_projectile")):
-			#print("the hitbox was from a projectile")
-			#owner.handle_damage(hitbox.owner.get_damage_from_projectile())
-		#else:
-			#owner.handle_damage(hitbox.owner.stats.attaackDamage)
+			print("PLAYER HIT!") 
+			owner.handle_damage(hitbox.owner.get_damage(),hitbox.owner.get_attackingPlayer()	)
+			#NOTE: while it is checked that hurtbox owner has handle damage, it does not check
+			# the num of arguments handlef by that mehtod, so this could still give an error 
