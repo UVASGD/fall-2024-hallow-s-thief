@@ -18,7 +18,7 @@ func _on_area_entered(hitbox: PlayerHitbox):
 	if hitbox.owner == owner:
 		#print("this is the owners hitbox")
 		return
-	if owner.has_method("handle_damage") and hitbox.owner.has_method("get_attackingPlayer"):
+	if owner.has_method("handle_damage") and hitbox.owner.has_method("get_attackingPlayer") and hitbox.owner.has_method("get_damage"):
 		#check to see if player is the owner of the attack
 		#here the hurt player can reference the attacking player instance
 		if (hitbox.owner.get_attackingPlayer() == owner):
@@ -26,6 +26,4 @@ func _on_area_entered(hitbox: PlayerHitbox):
 			#DO NOTHINGd
 		else: #else handle the damage
 			print("PLAYER HIT!") 
-			owner.handle_damage(hitbox.owner.get_damage(),hitbox.owner.get_attackingPlayer()	)
-			#NOTE: while it is checked that hurtbox owner has handle damage, it does not check
-			# the num of arguments handlef by that mehtod, so this could still give an error 
+			owner.handle_damage(hitbox.owner.get_attackingPlayer()	)

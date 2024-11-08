@@ -85,9 +85,11 @@ func handle_attack(): #Right now, just enables, hitbox for 0.5 seconds
 			print("ERROR: Player not assigned character")
 	
 	
-func handle_damage(damage: int, attackingPlayer: CharacterBody2D) -> void:
-	Health -= damage 
-	#print(Health)
+func handle_damage(attackingPlayer: CharacterBody2D) -> void:
+	Health -= attackingPlayer.get_damage()
+	 
+	
+
 func shoot_projectile(projectile: PackedScene) -> void:
 	var proj_instance := projectile.instantiate()
 	# set the projectile instance at players locatio
@@ -100,24 +102,6 @@ func shoot_projectile(projectile: PackedScene) -> void:
 	proj_instance.set_attackingPlayer(self)
 	#spawn projectile
 	add_child(proj_instance)
-
-#func attack_Frankenstein(frank_attack: PackedScene) -> void:
-	#var frank_attack_instance := frank_attack.instantiate()
-	#frank_attack_instance.position = self.global_position
-	#frank_attack_instance.direction = global_position.direction_to(get_global_mouse_position())
-	#frank_attack_instance.set_damage(stats.attackDamage)
-	#frank_attack_instance.set_attackingPlayer(self)
-	##add_child(frank_attack_instance)
-	#add_child(frank_attack_instance)
-
-#func attack_Pumpkin(pump_attack: PackedScene) -> void:
-	#var pumpkin_attack_instance := pump_attack.instantiate()
-	#pumpkin_attack_instance.position = self.global_position
-	#pumpkin_attack_instance.direction = global_position.direction_to(get_global_mouse_position())
-	#pumpkin_attack_instance.set_damage(stats.attackDamage)
-	#pumpkin_attack_instance.set_attackingPlayer(self)
-	##add_child(frank_attack_instance)
-	#add_child(pumpkin_attack_instance)
 	
 func add_attack_instance_as_child(attack_scene: PackedScene) -> void:
 	var attack_instance := attack_scene.instantiate()
@@ -130,3 +114,6 @@ func add_attack_instance_as_child(attack_scene: PackedScene) -> void:
 	
 func getPlayerPosition() -> Vector2:
 	return position
+
+func get_damage() -> float:
+	return stats.attackDamage
