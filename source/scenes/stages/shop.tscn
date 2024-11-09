@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://c35tr47yom1wt"]
+
+[ext_resource type="Script" path="res://source/scenes/game_container/switch_to_scene.gd" id="1_vm7w5"]
+
+[node name="Shop" type="Node2D"]
+
+[node name="PlayButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Play"
+script = ExtResource("1_vm7w5")
+switch_to = 11
+
+[node name="THIS SCENE IS TEMP" type="Label" parent="."]
+offset_left = 117.0
+offset_top = 121.0
+offset_right = 1076.0
+offset_bottom = 300.0
+text = "Shop
+THIS SCENE IS TEMP
+luke is working on it
+delete the button and trigger the next scene when someone wins
+(use GameContainer.GAME_CONTAINER.switch_to_scene(GameContainer.Scene.RANDOM_STAGE)
+(you can call this method from any script)"

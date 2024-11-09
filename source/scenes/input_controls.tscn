@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl8jv2cft44qw"]
+
+[ext_resource type="Script" path="res://source/scripts/input_controls.gd" id="1_8pc6d"]
+[ext_resource type="PackedScene" uid="uid://caum2ucqak0ro" path="res://source/scenes/input_button.tscn" id="1_ygp52"]
+
+[node name="Input Controls" type="Control"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8pc6d")
+metadata/player_num = 0
+metadata/input_type = ""
+metadata/device_id = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Input Type"
+metadata/action_name = ""
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Input Type"
+
+[node name="Input Button1" parent="VBoxContainer" instance=ExtResource("1_ygp52")]
+layout_mode = 2
+metadata/input_name = "Up"
+
+[node name="Input Button2" parent="VBoxContainer" instance=ExtResource("1_ygp52")]
+layout_mode = 2
+metadata/input_name = "Left"
+
+[node name="Input Button3" parent="VBoxContainer" instance=ExtResource("1_ygp52")]
+layout_mode = 2
+metadata/input_name = "Down"
+
+[node name="Input Button4" parent="VBoxContainer" instance=ExtResource("1_ygp52")]
+layout_mode = 2
+metadata/input_name = "Right"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

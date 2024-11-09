@@ -1,14 +1,43 @@
+<<<<<<< HEAD
 [gd_scene load_steps=4 format=3 uid="uid://diprigu67ubnb"]
 
 [ext_resource type="PackedScene" uid="uid://rgfnpcsvv534" path="res://source/scenes/player.tscn" id="1_uxgo6"]
 [ext_resource type="Script" path="res://source/scripts/quit.gd" id="2_c3313"]
 [ext_resource type="PackedScene" uid="uid://bn8k582vibkdr" path="res://scenes/sandbag.tscn" id="3_ujogw"]
+=======
+[gd_scene load_steps=5 format=3 uid="uid://diprigu67ubnb"]
+
+[ext_resource type="PackedScene" uid="uid://rgfnpcsvv534" path="res://source/scenes/player.tscn" id="1_uxgo6"]
+[ext_resource type="Script" path="res://source/scripts/quit.gd" id="2_c3313"]
+[ext_resource type="PackedScene" uid="uid://b55salwd6xeoq" path="res://source/scenes/settings.tscn" id="3_c83ju"]
+[ext_resource type="PackedScene" uid="uid://bakpk65fsky20" path="res://source/scenes/itemSelector/item_selector_portal.tscn" id="4_nji7u"]
+>>>>>>> Quintin_2
 
 [node name="DemoRoom" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uxgo6")]
+collision_mask = 2
+metadata/player_num = 1
+
+[node name="Player2" parent="." instance=ExtResource("1_uxgo6")]
+position = Vector2(73, 0)
+collision_mask = 2
+metadata/player_num = 2
+
+[node name="Player3" parent="." instance=ExtResource("1_uxgo6")]
+position = Vector2(122, 1)
+collision_mask = 2
+metadata/player_num = 3
+
+[node name="Player4" parent="." instance=ExtResource("1_uxgo6")]
+position = Vector2(156, -2)
+collision_mask = 2
+metadata/player_num = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ItemSelectorPortal" parent="." instance=ExtResource("4_nji7u")]
+position = Vector2(86, -110)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 40.0
@@ -18,5 +47,14 @@ color = Color(1, 0, 1, 1)
 [node name="quit" type="Node2D" parent="."]
 script = ExtResource("2_c3313")
 
+<<<<<<< HEAD
 [node name="Node2D" parent="." instance=ExtResource("3_ujogw")]
 position = Vector2(210, -2)
+=======
+[node name="Settings" parent="." instance=ExtResource("3_c83ju")]
+visible = false
+offset_left = -508.0
+offset_top = -258.0
+offset_right = 516.0
+offset_bottom = 254.0
+>>>>>>> Quintin_2

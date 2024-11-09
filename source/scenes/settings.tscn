@@ -1,0 +1,89 @@
+[gd_scene load_steps=4 format=3 uid="uid://b55salwd6xeoq"]
+
+[ext_resource type="Script" path="res://source/scripts/settings.gd" id="1_lmc7t"]
+[ext_resource type="PackedScene" uid="uid://cl8jv2cft44qw" path="res://source/scenes/input_controls.tscn" id="1_ovefd"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_awq37"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1024.0
+offset_bottom = 512.0
+script = ExtResource("1_lmc7t")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0.333333, 0.572549, 1)
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 512.0
+texture = SubResource("CanvasTexture_awq37")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 512.0
+current_tab = 0
+
+[node name="Controls" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls"]
+layout_mode = 2
+offset_right = 1024.0
+offset_bottom = 481.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Controls/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player 1"
+
+[node name="Input Controls" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_ovefd")]
+layout_mode = 2
+metadata/player_num = 1
+metadata/input_type = "Keyboard"
+
+[node name="Label2" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player 2"
+
+[node name="Input Controls2" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_ovefd")]
+layout_mode = 2
+metadata/player_num = 2
+metadata/input_type = "Keyboard"
+metadata/device_id = 1
+
+[node name="Label3" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player 3"
+
+[node name="Input Controls3" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_ovefd")]
+layout_mode = 2
+metadata/player_num = 3
+metadata/input_type = "Keyboard"
+metadata/device_id = 2
+
+[node name="Label4" type="Label" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player 4"
+
+[node name="Input Controls4" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_ovefd")]
+layout_mode = 2
+metadata/player_num = 4
+metadata/input_type = "Keyboard"
+metadata/device_id = 3

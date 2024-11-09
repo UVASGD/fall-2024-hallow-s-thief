@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://caum2ucqak0ro"]
+
+[ext_resource type="Script" path="res://source/scripts/input_button.gd" id="1_8e18b"]
+
+[node name="Input Button" type="Control"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8e18b")
+metadata/input_name = ""
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 32.0
+theme_override_constants/separation = 1
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Input Name"
+metadata/action_name = ""
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Input"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

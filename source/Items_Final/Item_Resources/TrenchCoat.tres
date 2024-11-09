@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cc563lr5i06gw"]
+
+[ext_resource type="Script" path="res://source/Items_Final/Item_Scripts/Item.gd" id="1_7l3le"]
+[ext_resource type="Texture2D" uid="uid://dna8nprqj1ifn" path="res://source/Items_Final/Item_Sprites/trenchcoat.png" id="2_rr3wv"]
+
+[resource]
+script = ExtResource("1_7l3le")
+sprite = ExtResource("2_rr3wv")
+name = "Trench Coat"
+description = "Increases Health"
+rarity = 0
+cost = 0
+attackDamage = 0.0
+attackSpeed = 0.0
+maxHealth = 2.0
+speed = 0.0
+cooldownReduction = 0.0
+tenacity = 0.0
+luck = 0.0
+functionTypes = Array[int]([])
+functionNames = Array[String]([])

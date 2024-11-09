@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item_Test" load_steps=2 format=3 uid="uid://6ukslotnk4y3"]
+
+[ext_resource type="Script" path="res://source/scripts/Item_Test.gd" id="1_h2nlj"]
+
+[resource]
+script = ExtResource("1_h2nlj")
+damage = 5
+health = 0
+onStartFunctions = "damage_increase_start"
+onFireFunctions = "damage_increase"

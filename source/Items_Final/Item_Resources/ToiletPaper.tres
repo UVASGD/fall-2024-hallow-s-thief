@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://8uxqwbgx5io3"]
+
+[ext_resource type="Script" path="res://source/Items_Final/Item_Scripts/Item.gd" id="1_lp8ya"]
+[ext_resource type="Texture2D" uid="uid://drouo1e7b67oo" path="res://source/Items_Final/Item_Sprites/toiletpaper.png" id="2_5pmre"]
+
+[resource]
+script = ExtResource("1_lp8ya")
+sprite = ExtResource("2_5pmre")
+name = "Toilet Paper"
+description = "Decreases Cooldown"
+rarity = 0
+cost = 0
+attackDamage = 0.0
+attackSpeed = 0.0
+maxHealth = 0.0
+speed = 0.0
+cooldownReduction = 2.0
+tenacity = 0.0
+luck = 0.0
+functionTypes = Array[int]([])
+functionNames = Array[String]([])

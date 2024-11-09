@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dal6qgym6pnyf"]
+
+[ext_resource type="Script" path="res://source/Items_Final/Item_Scripts/Item.gd" id="1_innlo"]
+[ext_resource type="Texture2D" uid="uid://b4xjbdxvn3i2l" path="res://source/Items_Final/Item_Sprites/safetyscissors.png" id="2_h66q4"]
+
+[resource]
+script = ExtResource("1_innlo")
+sprite = ExtResource("2_h66q4")
+name = "SafetyScissors"
+description = "Slightly increases damage and speed"
+rarity = 0
+cost = 0
+attackDamage = 1.0
+attackSpeed = 0.0
+maxHealth = 0.0
+speed = 1.0
+cooldownReduction = 0.0
+tenacity = 0.0
+luck = 0.0
+functionTypes = Array[int]([])
+functionNames = Array[String]([])

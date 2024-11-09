@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://dxuc2aj1us8i2"]
+
+[ext_resource type="Script" path="res://source/Items_Final/Item_Scripts/Item.gd" id="1_2ncem"]
+
+[resource]
+script = ExtResource("1_2ncem")
+name = "Baseball cap"
+description = "Slightly increases health and decreases cooldown"
+rarity = 0
+cost = 0
+attackDamage = 0.0
+attackSpeed = 0.0
+maxHealth = 1.0
+speed = 0.0
+cooldownReduction = 1.0
+tenacity = 0.0
+luck = 0.0
+functionTypes = Array[int]([])
+functionNames = Array[String]([])

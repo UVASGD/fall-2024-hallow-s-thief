@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhtkciwdnjwos"]
+
+[ext_resource type="Script" path="res://source/scenes/game_container/switch_to_scene.gd" id="1_rb1yx"]
+
+[node name="Stage4" type="Node2D"]
+
+[node name="StageOverButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "[StageOver]"
+script = ExtResource("1_rb1yx")
+switch_to = 6
+
+[node name="THIS SCENE IS TEMP" type="Label" parent="."]
+offset_left = 117.0
+offset_top = 121.0
+offset_right = 1076.0
+offset_bottom = 300.0
+text = "Stage 4
+THIS SCENE IS TEMP
+for now this scene just assumes player 1 wins
+delete the button and trigger the next scene when someone wins
+(use GameContainer.GAME_CONTAINER.switch_to_scene(GameContainer.Scene.RANDOM_STAGE)
+before switching to the next scene, make sure the points have been awarded.
+(call GameContinaer.GAME_CONTAINER.award_point_to_player() 
+or .award_points_to_players() or .award_points_to_players())
+(you can call these methods from any script)"

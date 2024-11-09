@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://1lo3qihmupbe"]
+
+[ext_resource type="Script" path="res://source/Items_Final/Item_Scripts/Item.gd" id="1_dphqa"]
+[ext_resource type="Texture2D" uid="uid://bxu2g1kcx6k20" path="res://source/Items_Final/Item_Sprites/boxinggloves.png" id="2_ky0rr"]
+
+[resource]
+script = ExtResource("1_dphqa")
+sprite = ExtResource("2_ky0rr")
+name = "Boxing Gloves"
+description = "Slightly increases attack and health"
+rarity = 0
+cost = 0
+attackDamage = 1.0
+attackSpeed = 0.0
+maxHealth = 1.0
+speed = 0.0
+cooldownReduction = 0.0
+tenacity = 0.0
+luck = 0.0
+functionTypes = Array[int]([])
+functionNames = Array[String]([])

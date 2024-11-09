@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmg3rcypapom8"]
+
+[ext_resource type="Script" path="res://source/scenes/game_container/switch_to_scene.gd" id="1_bh3vu"]
+
+[node name="CharacterSelect" type="Node2D"]
+
+[node name="PlayButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Play"
+script = ExtResource("1_bh3vu")
+switch_to = 4
+
+[node name="THIS SCENE IS TEMP" type="Label" parent="."]
+offset_left = 144.0
+offset_top = 130.0
+offset_right = 308.0
+offset_bottom = 179.0
+text = "Character Select
+THIS SCENE IS TEMP
+Aidan will replace
+"

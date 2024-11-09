@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bbebjdnx0jnqm"]
+
+[ext_resource type="Script" path="res://source/Items_Final/Item_Scripts/Item.gd" id="1_powpt"]
+[ext_resource type="Texture2D" uid="uid://b7rs3tdjkmife" path="res://source/Items_Final/Item_Sprites/bakingsoda.png" id="2_pi18r"]
+
+[resource]
+script = ExtResource("1_powpt")
+sprite = ExtResource("2_pi18r")
+name = "Baking Soda"
+description = "Increases Speed"
+rarity = 0
+cost = 0
+attackDamage = 0.0
+attackSpeed = 0.0
+maxHealth = 0.0
+speed = 2.0
+cooldownReduction = 0.0
+tenacity = 0.0
+luck = 0.0
+functionTypes = Array[int]([])
+functionNames = Array[String]([])

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://jdhh5df8llh8"]
+
+[ext_resource type="Script" path="res://source/Items_Final/Item_Scripts/Item.gd" id="1_aeuxc"]
+[ext_resource type="Texture2D" uid="uid://bldr5242uuk63" path="res://source/Items_Final/Item_Sprites/rainboots.png" id="2_x8rcl"]
+
+[resource]
+script = ExtResource("1_aeuxc")
+sprite = ExtResource("2_x8rcl")
+name = "Rain Boots"
+description = "Slightly increases health and speed"
+rarity = 0
+cost = 0
+attackDamage = 0.0
+attackSpeed = 0.0
+maxHealth = 1.0
+speed = 1.0
+cooldownReduction = 0.0
+tenacity = 0.0
+luck = 0.0
+functionTypes = Array[int]([])
+functionNames = Array[String]([])

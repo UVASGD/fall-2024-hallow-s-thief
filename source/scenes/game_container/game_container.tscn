@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dajeyyd76x0vu"]
+
+[ext_resource type="Script" path="res://source/scenes/game_container/game_container.gd" id="1_nfc83"]
+[ext_resource type="PackedScene" uid="uid://dd71ltua8vpqj" path="res://source/scenes/menus/main_menu.tscn" id="1_ojqp2"]
+
+[node name="GameContainer" type="Node2D"]
+script = ExtResource("1_nfc83")
+
+[node name="ActiveSceneHolder" type="Node2D" parent="."]
+
+[node name="MainMenu" parent="ActiveSceneHolder" instance=ExtResource("1_ojqp2")]
+
+[node name="OverlayPanels" type="Node2D" parent="."]
+
+[node name="Players" type="Node2D" parent="."]

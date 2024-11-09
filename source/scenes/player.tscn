@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [gd_scene load_steps=13 format=3 uid="uid://rgfnpcsvv534"]
 
 [ext_resource type="Script" path="res://source/scripts/player.gd" id="1_ws1a7"]
@@ -20,6 +21,11 @@ attackDamage = 0.0
 dashCooldown = 0.0
 abilityCooldown = 0.0
 cost = 0
+=======
+[gd_scene load_steps=4 format=3 uid="uid://rgfnpcsvv534"]
+
+[ext_resource type="Script" path="res://source/scripts/player.gd" id="1_ws1a7"]
+>>>>>>> Quintin_2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1d7hi"]
 
@@ -39,7 +45,6 @@ height = 60.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ws1a7")
-base_stats = SubResource("Resource_t33mb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1d7hi")
@@ -48,6 +53,7 @@ shape = SubResource("CapsuleShape2D_1d7hi")
 position = Vector2(1.07288e-06, 1.90735e-06)
 scale = Vector2(20, 15)
 mesh = SubResource("CapsuleMesh_tx0kn")
+<<<<<<< HEAD
 
 [node name="StatsAndItemHandler" type="Node2D" parent="."]
 script = ExtResource("3_3yyiq")
@@ -79,3 +85,5 @@ visible = false
 shape = SubResource("CapsuleShape2D_a0wf2")
 disabled = true
 debug_color = Color(0.532793, 0.411467, 1, 0.42)
+=======
+>>>>>>> Quintin_2

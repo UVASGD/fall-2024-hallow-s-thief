@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b1h7kigidl5t2"]
+
+[ext_resource type="Script" path="res://source/Items_Final/Item_Scripts/Item.gd" id="1_12rx8"]
+[ext_resource type="Texture2D" uid="uid://dqmbec8uh8jaq" path="res://source/Items_Final/Item_Sprites/yoyo.png" id="2_ibfa5"]
+
+[resource]
+script = ExtResource("1_12rx8")
+sprite = ExtResource("2_ibfa5")
+name = "Yo-Yo"
+description = "Slightly increases speed and reduces cooldown"
+rarity = 0
+cost = 0
+attackDamage = 0.0
+attackSpeed = 0.0
+maxHealth = 0.0
+speed = 1.0
+cooldownReduction = 1.0
+tenacity = 0.0
+luck = 0.0
+functionTypes = Array[int]([])
+functionNames = Array[String]([])

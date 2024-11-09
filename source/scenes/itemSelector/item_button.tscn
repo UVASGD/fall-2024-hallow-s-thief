@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bal5pfw8ipn81"]
+
+[ext_resource type="Script" path="res://source/scenes/itemSelector/item_button.gd" id="1_pasov"]
+
+[node name="ItemButton" type="Button"]
+text = "test
+"
+script = ExtResource("1_pasov")

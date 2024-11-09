@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://21ntxjjt6dfa"]
+
+[ext_resource type="Script" path="res://source/Items_Final/Item_Scripts/Item.gd" id="1_ombo1"]
+[ext_resource type="Texture2D" uid="uid://b781y2yilgedy" path="res://source/Items_Final/Item_Sprites/ovenmitts.png" id="2_f8fv4"]
+
+[resource]
+script = ExtResource("1_ombo1")
+sprite = ExtResource("2_f8fv4")
+name = "Oven Mitts"
+description = "Slightly increases tenacity"
+rarity = 0
+cost = 0
+attackDamage = 0.0
+attackSpeed = 0.0
+maxHealth = 0.0
+speed = 0.0
+cooldownReduction = 0.0
+tenacity = 1.0
+luck = 0.0
+functionTypes = Array[int]([])
+functionNames = Array[String]([])

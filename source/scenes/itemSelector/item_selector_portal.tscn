@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bakpk65fsky20"]
+
+[ext_resource type="Script" path="res://source/scenes/itemSelector/item_selector_portal.gd" id="1_lskow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fy8q"]
+size = Vector2(40, 40)
+
+[node name="ItemSelectorPortal" type="Area2D"]
+script = ExtResource("1_lskow")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 1, 0.352941, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_4fy8q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

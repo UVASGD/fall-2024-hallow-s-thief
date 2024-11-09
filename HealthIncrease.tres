@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item_Test" load_steps=2 format=3 uid="uid://dne8hlijjcu3q"]
+
+[ext_resource type="Script" path="res://source/scripts/Item_Test.gd" id="1_68lc7"]
+
+[resource]
+script = ExtResource("1_68lc7")
+damage = 0
+health = 5
+onStartFunctions = ""
+onFireFunctions = ""
+onGetHitFunctions = ""
