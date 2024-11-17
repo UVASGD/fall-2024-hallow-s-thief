@@ -1293,6 +1293,7 @@ floor_stop_on_slope = false
 floor_block_on_wall = false
 floor_max_angle = 0.0
 script = ExtResource("1_ws1a7")
+base_maxHealth = 100.0
 base_speed = 100.0
 character = 2
 metadata/player_num = "1"
@@ -1314,3 +1315,24 @@ script = ExtResource("2_lav1o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]
 shape = SubResource("CapsuleShape2D_vlfgb")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -10.0
+offset_top = -20.0
+offset_right = 30.0
+offset_bottom = 20.0
+scale = Vector2(0.5, 0.1)
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 0.0
+step = 1.0
+show_percentage = false
