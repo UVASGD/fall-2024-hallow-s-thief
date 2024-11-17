@@ -88,6 +88,8 @@ func removeStatus(status: String):
 	
 
 func addStatusStartFunction(statusName : String, function : Callable):
+	if(hasStatus(statusName)):
+		function.call()
 	if(!statusFunctionsStart.has(statusName)):
 		var newFunctions : Array[Callable]
 		statusFunctionsStart[statusName] = newFunctions
@@ -107,4 +109,7 @@ func call_start_functions(status : String) -> void:
 func call_end_functions(status : String) -> void:
 	for c in statusFunctionsEnd[status]:
 		c.call()
-	
+
+func clearAllStatusEffects() -> void:
+	for s in statuses:
+		removeStatus(s)

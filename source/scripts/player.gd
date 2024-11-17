@@ -66,6 +66,7 @@ var model: String
 #@onready var statusEffects : StatusEffectManager = $StatusEffectManager
 @onready var sprite : AnimatedSprite2D = $PlayerSprite/Body
 
+@onready var hpBar : ProgressBar = $Control/ProgressBar
 func _ready() -> void:
 	player_num = str(get_meta("player_num"))
 	set_starting_stats()
@@ -81,8 +82,10 @@ func _process(delta: float) -> void:
 		last_movement = movement
 
 func round_start(): #called by game manager
+	statusEffects.clearAllStatusEffects()
 	call_functions(onRoundStart)
-
+	hpBar.max_value = total_stats.maxHealth
+	hpBar.value = hpBar.max_value
 func handle_move() -> void:
 
 	movement = Vector2(Input.get_axis("Left" + player_num, "Right" + player_num), Input.get_axis("Up" + player_num, "Down" + player_num)).normalized()
@@ -163,8 +166,8 @@ func handle_damage(attackingPlayer: CharacterBody2D) -> void:
 				statusEffects.giveStatusTimed("Fire", max(3 * (1 - total_stats.tenacity * 0.1), 0))
 			_:
 				print("ERROR: attacking Player does not have a valid character")
-	if(!isMonster && attackingPlayer.isMonster):
-		candy += 1
+	if(isMonster && !attackingPlayer.isMonster):
+		attackingPlayer.candy += 1
 	#UPDATE
 	#Health -= attackingPlayer.get_damage()
 	
@@ -208,6 +211,7 @@ func change_health(deltaHealth : float):
 	if(health < 0):
 		#handle death
 		pass
+	hpBar.value = health
 
 func call_functions(arr : Array[Callable]):
 	for i in arr:

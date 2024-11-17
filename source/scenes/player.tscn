@@ -664,6 +664,7 @@ height = 28.0
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_ws1a7")
+base_maxHealth = 100.0
 base_speed = 100.0
 character = 2
 metadata/player_num = "1"
@@ -672,9 +673,7 @@ metadata/player_num = "1"
 
 [node name="Body" type="AnimatedSprite2D" parent="PlayerSprite"]
 sprite_frames = SubResource("SpriteFrames_1n7tg")
-animation = &"ghost_kid_attack_right"
-frame = 5
-frame_progress = 0.392947
+animation = &"ghost_kid_attack_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.25, 16.25)
@@ -685,3 +684,24 @@ script = ExtResource("2_lav1o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]
 shape = SubResource("CapsuleShape2D_vlfgb")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -10.0
+offset_top = -20.0
+offset_right = 30.0
+offset_bottom = 20.0
+scale = Vector2(0.5, 0.1)
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 0.0
+step = 1.0
+show_percentage = false
