@@ -1286,6 +1286,7 @@ radius = 9.0
 height = 28.0
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 2
 slide_on_ceiling = false
 floor_stop_on_slope = false
@@ -1297,16 +1298,18 @@ character = 2
 metadata/player_num = "1"
 
 [node name="PlayerSprite" type="Node2D" parent="."]
+position = Vector2(0, -18)
 
 [node name="Body" type="AnimatedSprite2D" parent="PlayerSprite"]
 sprite_frames = SubResource("SpriteFrames_1n7tg")
 animation = &"witch_monster_idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 13.875)
+position = Vector2(0, -4.125)
 shape = SubResource("RectangleShape2D_8bd1v")
 
 [node name="PlayerHurtbox" type="Area2D" parent="."]
+position = Vector2(0, -18)
 script = ExtResource("2_lav1o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]

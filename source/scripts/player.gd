@@ -37,12 +37,7 @@ var hit_animations: Array = [null, null, null, null]
 #var damage : int = 0
 #var topSpeed : int = 10
 
-enum Character {
-	WITCH = 1,
-	FRANKENSTEIN,
-	GHOST,
-	PUMPKIN
-}
+enum Character {PUMPKIN = 1, FRANKENSTEIN, WITCH, GHOST}
 
 @export var character : Character #SHOULD BE SET WHEN INSTANTIATING
 @onready var isMonster : bool = false
