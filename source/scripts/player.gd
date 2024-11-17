@@ -37,15 +37,11 @@ var hit_animations: Array = [null, null, null, null]
 #var damage : int = 0
 #var topSpeed : int = 10
 
-enum Character {
-	WITCH = 1,
-	FRANKENSTEIN,
-	GHOST,
-	PUMPKIN
-}
+enum Character {PUMPKIN = 1, FRANKENSTEIN, WITCH, GHOST}
 
 @export var character : Character #SHOULD BE SET WHEN INSTANTIATING
-@export var isMonster : bool
+@onready var isMonster : bool = false
+@onready var isAlive : bool = true
 
 #Enemy attack instances
 const Projectile_Scene := preload("res://source/scenes/projectile.tscn")
@@ -54,8 +50,8 @@ const Pumpkin_Attack_Scene := preload("res://source/scenes/pumpkin_attack.tscn")
 const Ghost_Attack_Scene := preload("res://source/scenes/ghost_attack.tscn")
 
 
-var health : float = 0
-var candy : int = 0
+@onready var health : float
+@onready var candy : int = 0
 var onAttackFunctions : Array[Callable]
 var onHitFunctions : Array[Callable]
 var onGetHitFunctions : Array[Callable]#When this one is called. should also call with the object hit as a parameter
@@ -67,6 +63,7 @@ var model: String
 #@onready var statusEffects : StatusEffectManager = $StatusEffectManager
 @onready var sprite : AnimatedSprite2D = $PlayerSprite/Body
 
+@onready var hpBar : ProgressBar = $Control/ProgressBar
 func _ready() -> void:
 	player_num = str(get_meta("player_num"))
 	set_starting_stats()
@@ -82,8 +79,10 @@ func _process(delta: float) -> void:
 		last_movement = movement
 
 func round_start(): #called by game manager
+	statusEffects.clearAllStatusEffects()
 	call_functions(onRoundStart)
-
+	hpBar.max_value = total_stats.maxHealth
+	hpBar.value = hpBar.max_value
 func handle_move() -> void:
 	movement = Vector2(Input.get_axis("Left" + player_num, "Right" + player_num), Input.get_axis("Up" + player_num, "Down" + player_num)).normalized()
 	if sprite.animation != model + "_attack_" + getDirectionWord(direction) || sprite.animation == model + "_attack_" + getDirectionWord(direction) && !sprite.is_playing(): playWalkOrIdleAnimation()
@@ -162,8 +161,8 @@ func handle_damage(attackingPlayer: CharacterBody2D) -> void:
 				statusEffects.giveStatusTimed("Fire", max(3 * (1 - total_stats.tenacity * 0.1), 0))
 			_:
 				print("ERROR: attacking Player does not have a valid character")
-	if(!isMonster && attackingPlayer.isMonster):
-		candy += 1
+	if(isMonster && !attackingPlayer.isMonster):
+		attackingPlayer.candy += 1
 	#UPDATE
 	#Health -= attackingPlayer.get_damage()
 	
@@ -205,8 +204,9 @@ func change_health(deltaHealth : float):
 	health += deltaHealth
 	call_functions(onGetHitFunctions)
 	if(health < 0):
-		#handle death
+		die()
 		pass
+	hpBar.value = health
 
 func call_functions(arr : Array[Callable]):
 	for i in arr:
@@ -231,7 +231,10 @@ func getDirectionWord(_direction: Vector2):
 		if _direction.y >= 0: return "down"
 		elif _direction.y < 0: return "up"
 
-
+func die():
+	get_parent().get_parent().check_player_states()
+	
+	
 #currently unused
 #func changeModel(newModel: String):
 	#model = newModel

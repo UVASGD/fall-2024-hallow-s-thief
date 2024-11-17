@@ -7,8 +7,8 @@
 script = ExtResource("1_f0ogi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(255, 161)
-scale = Vector2(4.03125, 2.5625)
+position = Vector2(256, 160)
+scale = Vector2(4, 2.5)
 texture = ExtResource("2_u755h")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -27,17 +27,18 @@ theme_override_constants/separation = 120
 alignment = 1
 
 [node name="CharacterSelectLabel" type="Label" parent="."]
-offset_left = 181.0
-offset_top = 35.0
-offset_right = 324.0
-offset_bottom = 101.0
+offset_left = 100.0
+offset_top = 25.0
+offset_right = 414.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 36
 text = "Character Select"
 
 [node name="test" type="Label" parent="."]
-offset_left = 226.0
-offset_top = 81.0
-offset_right = 266.0
-offset_bottom = 101.0
+offset_left = 203.0
+offset_top = 68.0
+offset_right = 243.0
+offset_bottom = 88.0
 
 [node name="RemovePlayerButton" type="Button" parent="."]
 offset_left = 216.0

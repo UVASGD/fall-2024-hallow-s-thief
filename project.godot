@@ -13,6 +13,7 @@ config_version=5
 config/name="Hallow's Thief"
 run/main_scene="res://source/scenes/game_container/game_container.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]

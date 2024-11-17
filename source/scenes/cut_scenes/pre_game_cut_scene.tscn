@@ -1,27 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn5ejiljdkkwe"]
+[gd_scene load_steps=3 format=3 uid="uid://bn5ejiljdkkwe"]
 
 [ext_resource type="Script" path="res://source/scenes/cut_scenes/pre_game_cut_scene.gd" id="1_cs6en"]
+[ext_resource type="Texture2D" uid="uid://cwxy166tu1106" path="res://assets/backgrounds/IMG_4798.jpg" id="2_6uf77"]
 
 [node name="PreGameCutScene" type="Node2D"]
 script = ExtResource("1_cs6en")
 
-[node name="ContinueButton" type="Button" parent="."]
-offset_left = 202.0
-offset_top = 191.0
-offset_right = 330.0
-offset_bottom = 222.0
-text = "Continue"
+[node name="MainMenuBackground" type="Sprite2D" parent="."]
+position = Vector2(256, 160)
+texture = ExtResource("2_6uf77")
 
 [node name="CutSceneLabel" type="Label" parent="."]
 offset_left = 19.0
-offset_top = 27.0
-offset_right = 494.0
-offset_bottom = 139.0
+offset_top = 83.0
+offset_right = 204.0
+offset_bottom = 195.0
 theme_override_font_sizes/font_size = 13
-text = "4 kids enter a spooky, haunted mansion on halloween night, looking for fun
+text = "4 kids enter a spooky,
+ haunted mansion on
+ halloween night, looking 
+for fun"
 
-But they find a cursed amulet that transforms them into monsters!
+[node name="CutSceneLabel2" type="Label" parent="."]
+offset_left = 320.0
+offset_top = 72.0
+offset_right = 509.0
+offset_bottom = 202.0
+theme_override_font_sizes/font_size = 13
+text = "But they find a cursed 
+amulet that transforms
+ them into monsters!
 
-Now they must fight amongst themselves for the powerful amulet!"
+Now they must fight 
+amongst themselves for 
+the powerful amulet!"
+
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 184.0
+offset_top = 263.0
+offset_right = 312.0
+offset_bottom = 294.0
+text = "Continue"
 
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

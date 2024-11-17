@@ -6,6 +6,7 @@
 script = ExtResource("1_nfc83")
 
 [node name="ActiveSceneHolder" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="OverlayPanels" type="Node2D" parent="."]
 

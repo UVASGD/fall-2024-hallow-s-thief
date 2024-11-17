@@ -1,48 +1,53 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd71ltua8vpqj"]
+[gd_scene load_steps=3 format=3 uid="uid://dd71ltua8vpqj"]
 
 [ext_resource type="Script" path="res://source/scenes/menus/main_menu.gd" id="1_y2x06"]
+[ext_resource type="Texture2D" uid="uid://cn6xb12yf77o8" path="res://assets/backgrounds/titlescreen_1.png" id="2_d75he"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_y2x06")
 
+[node name="MainMenuBackground" type="Sprite2D" parent="."]
+position = Vector2(256, 160)
+texture = ExtResource("2_d75he")
+
 [node name="MainMenuLabel" type="Label" parent="."]
-offset_left = 8.0
-offset_top = 26.0
-offset_right = 500.0
-offset_bottom = 116.0
+offset_left = 15.0
+offset_top = 71.0
+offset_right = 507.0
+offset_bottom = 161.0
 theme_override_font_sizes/font_size = 60
 text = "Hallow's Thief"
 horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="."]
-offset_left = 143.0
-offset_top = 124.0
-offset_right = 184.0
-offset_bottom = 155.0
+offset_left = 234.0
+offset_top = 163.0
+offset_right = 275.0
+offset_bottom = 194.0
 text = "Play"
 
-[node name="CreditsButton" type="Button" parent="."]
-offset_left = 132.0
-offset_top = 191.0
-offset_right = 200.0
-offset_bottom = 222.0
-text = "Credits"
-
 [node name="InstructionsButton" type="Button" parent="."]
-offset_left = 268.0
-offset_top = 129.0
-offset_right = 380.0
-offset_bottom = 160.0
+offset_left = 24.0
+offset_top = 187.0
+offset_right = 136.0
+offset_bottom = 218.0
 text = "Instructions"
 
+[node name="CreditsButton" type="Button" parent="."]
+offset_left = 44.0
+offset_top = 149.0
+offset_right = 112.0
+offset_bottom = 180.0
+text = "Credits"
+
 [node name="QuitButton" type="Button" parent="."]
-offset_left = 275.0
-offset_top = 196.0
-offset_right = 376.0
-offset_bottom = 227.0
+offset_left = 206.0
+offset_top = 248.0
+offset_right = 307.0
+offset_bottom = 279.0
 text = "Quit"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="InstructionsButton" to="." method="_on_instructions_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
