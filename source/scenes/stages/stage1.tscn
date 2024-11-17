@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cq06uelc7kssp"]
+
+[gd_scene format=3 uid="uid://w46i3qg323y4"]
+
 
 [node name="Stage1" type="Node2D"]
 

@@ -18,7 +18,8 @@ func _ready():
 	add_player()
 
 func _physics_process(_delta: float) -> void:
-	test.text = str("Player Count: ") + str(player_count) + str(" ") + str(player_classes)
+	#test.text = str("Player Count: ") + str(player_count) + str(" ") + str(player_classes)
+	test.text = str("Player Count: ") + str(player_count)
 	match(len(player_insts) - 1):
 		1:
 			player_classes[0] = player_insts[0].value
@@ -51,6 +52,8 @@ func _on_start_button_pressed() -> void:
 	settings.scale = Vector2(0.4, 0.4)
 	settings.position = Vector2(51.2, 57.6)
 	game_container.add_child(settings)
+	
+	game_container.start_game()
 
 func _on_left_button_1_pressed() -> void:
 	player_classes[0] -= 1

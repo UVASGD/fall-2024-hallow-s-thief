@@ -3,8 +3,10 @@
 [node name="GameOver" type="Node2D"]
 
 [node name="MainMenuButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 209.0
+offset_top = 241.0
+offset_right = 293.0
+offset_bottom = 269.0
 text = "MainMenu"
 
 [node name="TEMP" type="Label" parent="."]

@@ -11,6 +11,8 @@ static var GAME_CONTAINER : GameContainer
 #The player nodes are instantiated in the Players node, they can be hidden and frozen when necessary
 @onready var Players = $Players
 
+@onready var Player_Insts = []
+
 #Scenes
 @onready var main_menu : PackedScene = preload("res://source/scenes/menus/main_menu.tscn")
 @onready var credits : PackedScene = preload("res://source/scenes/menus/credits.tscn")
@@ -34,7 +36,7 @@ static var GAME_CONTAINER : GameContainer
 
 #Scoring
 var player_scores : Array[int] = [0,0,0,0]
-var winning_score : int = 5
+var winning_score : int = 3
 
 #### METHODS ####
 
@@ -47,40 +49,33 @@ func _process(_elta):
 	if Input.is_key_pressed(KEY_Q) :
 		get_tree().quit()
 
-func switch_to_scene(scene_name : String):
-	switch_active_scene(scene_dict[scene_name])
-	
-	#below: debug code, above: actual code
-	#if scene == shop:
-		#award_point_to_player(1)
-		#print("POINTS AWARDED FOR DEBUG PURPOSES")
-		#if player_scores[0] == winning_score :
-			#switch_active_scene(game_over)
-			#player_scores = [0,0,0,0]
-		#else :
-			#switch_active_scene(shop)
-	#else :
-		#switch_active_scene(scene)
-
-func switch_active_scene(scene : PackedScene) :
+func switch_to_scene(scene : String) :
 	if ActiveSceneHolder.get_child_count() > 0:
 		ActiveSceneHolder.get_child(0).queue_free()
-	var s = scene.instantiate()
+	var s = scene_dict[scene].instantiate()
 	ActiveSceneHolder.add_child(s)
-
-#func get_random_stage() -> PackedScene:
-	#var r = int(randf() * 4)
-	#if r == 0 : return stage1
-	#if r == 1 : return stage2
-	#if r == 2 : return stage3
-	#else : return stage4
 
 func award_point_to_player(player : int) :
 	player_scores[player-1] += 1
+	if player_scores[player-1] > 2:
+		switch_to_scene("GameOver")
 
-func award_points_to_player(player : int, points : int) :
-	player_scores[player-1] += points
+func start_game():
+	for player in Players.get_children():
+		Player_Insts.append(player)
+	reset_stats()
 
-func award_points_to_players(points : Array[int]) :
-	for i in player_scores.size() :
-		player_scores[i] += points[i]
+func check_player_states():
+	var isMonsterDead = false
+	for player in Player_Insts:
+		if player.isMonster == true and player.isAlive == false:
+			reset_stats()
+			get_parent().get_parent().switch_to_scene("Stage")
+
+func reset_stats():
+	for player in Player_Insts:
+		player.isAlive = 1
+		if player.isMonster == false:
+			player.health = 100
+		else:
+			player.health = 800

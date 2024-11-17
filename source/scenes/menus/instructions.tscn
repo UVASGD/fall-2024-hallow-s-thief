@@ -1,24 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://cltaghkxnswjy"]
+[gd_scene load_steps=3 format=3 uid="uid://cltaghkxnswjy"]
 
 [ext_resource type="Script" path="res://source/scenes/menus/instructions.gd" id="1_g7wwq"]
+[ext_resource type="Texture2D" uid="uid://cn6xb12yf77o8" path="res://assets/backgrounds/titlescreen_1.png" id="2_0e2eq"]
 
 [node name="Instructions" type="Node2D"]
 script = ExtResource("1_g7wwq")
 
+[node name="MainMenuBackground" type="Sprite2D" parent="."]
+position = Vector2(256, 160)
+texture = ExtResource("2_0e2eq")
+
 [node name="InstructionsLabel" type="Label" parent="."]
-offset_left = 7.0
-offset_top = 16.0
-offset_right = 520.0
-offset_bottom = 134.0
+offset_left = -2.0
+offset_top = 75.0
+offset_right = 511.0
+offset_bottom = 193.0
 theme_override_font_sizes/font_size = 50
 text = "Instructions"
 horizontal_alignment = 1
 
+[node name="Label" type="Label" parent="."]
+offset_left = 149.0
+offset_top = 163.0
+offset_right = 383.0
+offset_bottom = 257.0
+theme_override_font_sizes/font_size = 25
+text = "3v1 Boss Battle!"
+
 [node name="BackButton" type="Button" parent="."]
-offset_left = 225.0
-offset_top = 190.0
-offset_right = 267.0
-offset_bottom = 218.0
+offset_left = 227.0
+offset_top = 248.0
+offset_right = 273.0
+offset_bottom = 276.0
 text = "Back"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

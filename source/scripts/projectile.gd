@@ -31,7 +31,6 @@ func _physics_process(delta: float) -> void:
 	position += direction*speed*delta #moves the projectile forward
 	
 func destroy_projectile(_body: Node) -> void:
-	#explode_with_particles()
 	queue_free()
 	
 func get_damage() -> int:

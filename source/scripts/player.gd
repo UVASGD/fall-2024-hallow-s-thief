@@ -11,6 +11,7 @@ var last_movement := Vector2(0,1)
 var ACCELERATION := 2
 var DECELERATION := 2
 var dash: bool
+var awaiting_dash: bool
 @export var base_attackDamage: float
 @export var base_attackSpeed: float
 @export var base_maxHealth : float
@@ -36,15 +37,11 @@ var hit_animations: Array = [null, null, null, null]
 #var damage : int = 0
 #var topSpeed : int = 10
 
-enum Character {
-	WITCH,
-	FRANKENSTEIN,
-	GHOST,
-	PUMPKIN
-}
+enum Character {PUMPKIN = 1, FRANKENSTEIN, WITCH, GHOST}
 
 @export var character : Character #SHOULD BE SET WHEN INSTANTIATING
-@export var isMonster : bool
+@onready var isMonster : bool = false
+@onready var isAlive : bool = true
 
 #Enemy attack instances
 const Projectile_Scene := preload("res://source/scenes/projectile.tscn")
@@ -53,8 +50,8 @@ const Pumpkin_Attack_Scene := preload("res://source/scenes/pumpkin_attack.tscn")
 const Ghost_Attack_Scene := preload("res://source/scenes/ghost_attack.tscn")
 
 
-var health : float = 0
-var candy : int = 0
+@onready var health : float
+@onready var candy : int = 0
 var onAttackFunctions : Array[Callable]
 var onHitFunctions : Array[Callable]
 var onGetHitFunctions : Array[Callable]#When this one is called. should also call with the object hit as a parameter
@@ -87,22 +84,19 @@ func round_start(): #called by game manager
 	hpBar.max_value = total_stats.maxHealth
 	hpBar.value = hpBar.max_value
 func handle_move() -> void:
-
 	movement = Vector2(Input.get_axis("Left" + player_num, "Right" + player_num), Input.get_axis("Up" + player_num, "Down" + player_num)).normalized()
-	playWalkOrIdleAnimation()
-  
+	if sprite.animation != model + "_attack_" + getDirectionWord(direction) || sprite.animation == model + "_attack_" + getDirectionWord(direction) && !sprite.is_playing(): playWalkOrIdleAnimation()
+	
 	if not velocity.is_zero_approx(): direction = velocity
 	
-	if movement.length() :
-		Speed = move_toward(Speed, total_stats.speed, ACCELERATION)
-	
-	if not dash and Input.is_action_just_pressed("Dash"):
+	if not awaiting_dash and Input.is_action_just_pressed("Dash" + player_num):
 		print("ENTERING DASH")
 		dashing()
-	if movement.length(): # stats.topSpeed = 10
-		Speed = move_toward(Speed, total_stats.speed, total_stats.speed * ACCELERATION)
-	else:
-		Speed = move_toward(Speed, 0, total_stats.speed * DECELERATION) # Gradually decrease speed to zero
+	if not dash:
+		if movement.length(): # stats.topSpeed = 10
+			Speed = move_toward(Speed, total_stats.speed, total_stats.speed * ACCELERATION)
+		else:
+			Speed = move_toward(Speed, 0, total_stats.speed * DECELERATION) # Gradually decrease speed to zero
 	
 	if movement.x:
 		velocity.x = movement.x * Speed
@@ -132,10 +126,11 @@ func set_model_name():
 		Character.PUMPKIN:
 			model = "pumpkin_" + ("monster" if isMonster else "kid")
 		_:
-			print("ERROR: Player not assigned character")		
+			print("ERROR: Player not assigned character")
 
 func handle_attack(): #Right now, just enables, hitbox for 0.5 seconds
 	call_functions(onAttackFunctions)
+	playAttackAnimation()
 	match character:
 		#THIS NEEDS TO BE UPDATED AFTER ATTACK SCENES MADE
 		Character.WITCH:
@@ -209,7 +204,7 @@ func change_health(deltaHealth : float):
 	health += deltaHealth
 	call_functions(onGetHitFunctions)
 	if(health < 0):
-		#handle death
+		die()
 		pass
 	hpBar.value = health
 
@@ -223,17 +218,23 @@ func playWalkOrIdleAnimation():
 	else:
 		sprite.play(model + "_walk_" + getDirectionWord(velocity))
 		
+func playAttackAnimation():
+	print("AMONGUS")
+	sprite.play(model + "_attack_" + getDirectionWord(direction))
 
 func getDirectionWord(_direction: Vector2):
 	if _direction.is_zero_approx(): return "down"
-	if abs(_direction.x) >= abs(direction.y):
+	if abs(_direction.x) >= abs(direction.y - 0.1):
 		if _direction.x >= 0: return "right"
 		elif _direction.x < 0: return "left"
 	else:
 		if _direction.y >= 0: return "down"
 		elif _direction.y < 0: return "up"
 
-
+func die():
+	get_parent().get_parent().check_player_states()
+	
+	
 #currently unused
 #func changeModel(newModel: String):
 	#model = newModel
@@ -290,7 +291,10 @@ func getDirectionWord(_direction: Vector2):
 func dashing():
 	## dash values, please
 	dash = true
+	awaiting_dash = true
 	Speed = 750
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(0.05).timeout
 	dash = false
+	await get_tree().create_timer(2).timeout
+	awaiting_dash = false
 	Speed = move_toward(Speed, 0, total_stats.speed * DECELERATION)

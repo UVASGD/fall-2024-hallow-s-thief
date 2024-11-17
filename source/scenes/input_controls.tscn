@@ -67,4 +67,8 @@ metadata/input_name = "Right"
 layout_mode = 2
 metadata/input_name = "Attack"
 
+[node name="Input Button6" parent="VBoxContainer" instance=ExtResource("1_ygp52")]
+layout_mode = 2
+metadata/input_name = "Dash"
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

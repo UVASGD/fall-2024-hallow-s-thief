@@ -6,10 +6,12 @@
 script = ExtResource("1_nfc83")
 
 [node name="ActiveSceneHolder" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="OverlayPanels" type="Node2D" parent="."]
 
 [node name="Players" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(256, 160)
